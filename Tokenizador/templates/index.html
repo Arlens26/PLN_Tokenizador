@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<meta charset="utf-8">
+	<title>Tokenizador</title>	
+	<link rel="stylesheet" href="{% static 'css/base.css' %}">
+	  
+	 {# Cargamos la librería #}
+	 {% load bootstrap4 %}
+ 
+	 {# CSS Bootstrap #}
+	 {% bootstrap_css %}
+</head>
+<body>
+	<div class="row">
+		<div id="contenido" class="content col-sm-4">
+			<h1>Tokenizador</h1>
+			<form method="POST">
+				{% csrf_token %}
+				{{ form.as_p }}	
+				<div>
+					<button class="btn btn-primary" type="submit" name="word" value="word">word</button>
+					<button class="btn btn-primary" type="submit" name="subword" value="subword">subword</button>
+				</div>
+			</form>			
+		</div>
+	</div>
+	<div class="row">
+		<div class=" content col-sm-4">
+			{% for tw in tweet %}
+				<span> {{ tw.tweet }} </span>
+				<span> {{ tw.name }} </span>
+				<span> {{ tw.word }} </span>
+			{% endfor %}
+				<!--<textarea name="box" rows="15" cols="60" placeholder="Ingrese el tweet"></textarea>	--->
+		</div>
+	</div>
+</body>
+</html>
